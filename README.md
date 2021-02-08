@@ -1,5 +1,7 @@
 # my-fashion-store
 
+Regarding design decisions, please refer to DECISIONS.md
+
 # Prerequisites
 
 1. You have Docker v20 or above installed
