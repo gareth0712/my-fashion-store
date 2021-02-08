@@ -1,0 +1,23 @@
+version: '3.9'
+services:
+  mongodb:
+    image: mongo:latest
+    command: ['mongod', '--port', '27031']
+    container_name: mongodb
+    volumes:
+      - ./mongodb/database:/data/db
+    ports:
+      - 27031:27031
+    restart: unless-stopped
+  myfashionstore:
+    image: my-fashion-store:latest
+    command: ['bin/wait-for-it.sh', 'mongodb:27031', '--', 'yarn', 'start']
+    depends_on:
+      - 'mongodb'
+    environment:
+      - DOCKER=TRUE
+    container_name: myfashionstore
+    volumes:
+      - ./csv:/opt/my-fashion-store/csv
+    ports:
+      - 8081:8081
