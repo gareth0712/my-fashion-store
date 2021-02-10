@@ -5,6 +5,7 @@ const insert = require('../utils/insert');
 
 exports.getAllSalesReports = catchAsync(async (req, res, next) => {
   // If no req.query given by user, return all records
+  let message;
   let query = {};
 
   // Check whether user provides startDate and whether it is in valid date format
@@ -19,11 +20,18 @@ exports.getAllSalesReports = catchAsync(async (req, res, next) => {
   }
 
   // Sample for the complete query: await sales.find({ "lastPurchaseDate": { "$gte": startDate, "$lt": endDate }})
-  let sales = await Sales.find(query);
+  const numQueriedResults = await Sales.countDocuments(query);
+  // Display a maximum of 10,000 JSONs only to avoid memory issue
+  if (numQueriedResults > 10000)
+    message =
+      'Number of queried records exceeds 10,000 , will display a maximum of 10,000 records in JSON only';
+  const sales = await Sales.find(query).limit(10000);
 
   res.status(200).json({
     status: 'success',
-    results: sales.length,
+    queriedResults: numQueriedResults,
+    message,
+    dataDisplayed: sales.length,
     data: { sales },
   });
 });
