@@ -89,9 +89,9 @@ Recreating myfashionstore ... done
 `GET /sales/report`
 
 - Without providing any parameters - Show all sales record
-- Query parameter "startDate": If given, the API returns records since the provided date and the date will be included. Suggested format: YYYY-MM-DD. e.g. http://localhost:8081/sales/record?startDate=2020-01-01
-- Query parameter "endDate": If given, the API returns records before the provided date and the date will not be included. Suggested format: YYYY-MM-DD. e.g. http://localhost:8081/sales/record?endDate=2020-01-01
-- Combining the use of startDate and endDate, you can specify the preferred date range
+- `Query parameter "startDate"` If given, the API returns records since the provided date and the date will be included. Suggested format: YYYY-MM-DD. e.g. http://localhost:8081/sales/record?startDate=2020-01-01
+- `Query parameter "endDate"` If given, the API returns records before the provided date and the date will not be included. Suggested format: YYYY-MM-DD. e.g. http://localhost:8081/sales/record?endDate=2020-01-01
+- Combining the use of startDate and endDate, you can specify the preferred date range. e.g. http://localhost:8081/sales/record?startDate=2020-01-01&endDate=2020-01-01
 
 `POST /sales/record`
 
