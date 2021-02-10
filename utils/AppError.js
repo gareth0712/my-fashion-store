@@ -6,5 +6,5 @@ class AppError extends Error {
     this.status = `${statusCode}`.startsWith('4') ? 'fail' : 'error';
   }
 }
-a;
+
 module.exports = AppError;
