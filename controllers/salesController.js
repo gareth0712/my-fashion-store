@@ -29,7 +29,7 @@ exports.getAllSalesReports = catchAsync(async (req, res, next) => {
 
   res.status(200).json({
     status: 'success',
-    queriedResults: numQueriedResults,
+    numOfQueriedResults: numQueriedResults,
     message,
     dataDisplayed: sales.length,
     data: { sales },
