@@ -33,7 +33,7 @@ test('Should connect to server', async () => {
 
 test('Should receive sales report of 0 record at the beginning', async () => {
   const reports = await request.get('/sales/report').expect(200);
-  expect(reports.body.results).toBe(0);
+  expect(reports.body.dataDisplayed).toBe(0);
 });
 
 test('Should insert 10 records upon a ordinary csv files with 10 records is provided', async () => {
@@ -65,7 +65,7 @@ test('Should return 10 reports from /sales/report after 10 sales record are adde
     .expect(201);
   expect(addedSales.body.recordsAdded).toBe(10);
   const reports = await request.get('/sales/report').expect(200);
-  expect(reports.body.results).toBe(10);
+  expect(reports.body.dataDisplayed).toBe(10);
 });
 
 test('Test startDate: Should return 7 reports from /sales/report with LAST_PURCHASE_DATE after 2020', async () => {
@@ -77,12 +77,12 @@ test('Test startDate: Should return 7 reports from /sales/report with LAST_PURCH
     .expect(201);
   expect(addedSales.body.recordsAdded).toBe(10);
   const reports = await request.get('/sales/report').expect(200);
-  expect(reports.body.results).toBe(10);
+  expect(reports.body.dataDisplayed).toBe(10);
   const reportsSince2020 = await request
     .get('/sales/report')
     .query({ startDate: '2020-01-01' })
     .expect(200);
-  expect(reportsSince2020.body.results).toBe(7);
+  expect(reportsSince2020.body.dataDisplayed).toBe(7);
 });
 
 test('Test endDate: Should return 6 reports from /sales/report with LAST_PURCHASE_DATE before 2020', async () => {
@@ -94,12 +94,12 @@ test('Test endDate: Should return 6 reports from /sales/report with LAST_PURCHAS
     .expect(201);
   expect(addedSales.body.recordsAdded).toBe(10);
   const reports = await request.get('/sales/report').expect(200);
-  expect(reports.body.results).toBe(10);
+  expect(reports.body.dataDisplayed).toBe(10);
   const reportsSince2020 = await request
     .get('/sales/report')
     .query({ endDate: '2020-01-01' })
     .expect(200);
-  expect(reportsSince2020.body.results).toBe(6);
+  expect(reportsSince2020.body.dataDisplayed).toBe(6);
 });
 
 test('Test Date Range: Should return 5 reports from /sales/report with LAST_PURCHASE_DATE in 2019', async () => {
@@ -111,10 +111,10 @@ test('Test Date Range: Should return 5 reports from /sales/report with LAST_PURC
     .expect(201);
   expect(addedSales.body.recordsAdded).toBe(15);
   const reports = await request.get('/sales/report').expect(200);
-  expect(reports.body.results).toBe(15);
+  expect(reports.body.dataDisplayed).toBe(15);
   const reportsIn2019 = await request
     .get('/sales/report')
     .query({ startDate: '2019-01-01', endDate: '2020-01-01' })
     .expect(200);
-  expect(reportsIn2019.body.results).toBe(5);
+  expect(reportsIn2019.body.dataDisplayed).toBe(5);
 });
