@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-const AppError = require('./appError');
+const AppError = require('./AppError');
 
 const validateCsvFile = async (path) => {
   if (!fs.existsSync(path))
@@ -54,31 +54,3 @@ module.exports = {
   validateNumber,
   validateLastPurchaseDate,
 };
-
-// Reference: https://nodejs.org/api/path.html#path_path_isabsolute_path
-
-// path.basename(path[, ext])
-// #
-// History
-
-//     path <string>
-//     ext <string> An optional file extension
-//     Returns: <string>
-
-// The path.basename() method returns the last portion of a path, similar to the Unix basename command. Trailing directory separators are ignored, see path.sep.
-
-// path.basename('/foo/bar/baz/asdf/quux.html');
-// // Returns: 'quux.html'
-
-// path.basename('/foo/bar/baz/asdf/quux.html', '.html');
-// // Returns: 'quux'
-
-// Although Windows usually treats file names, including file extensions, in a case-insensitive manner, this function does not. For example, C:\\foo.html and C:\\foo.HTML refer to the same file, but basename treats the extension as a case-sensitive string:
-
-// path.win32.basename('C:\\foo.html', '.html');
-// // Returns: 'foo'
-
-// path.win32.basename('C:\\foo.HTML', '.html');
-// // Returns: 'foo.HTML'
-
-// A TypeError is thrown if path is not a string or if ext is given and is not a string.

@@ -1,5 +1,5 @@
 const catchAsync = require('../utils/catchAsync');
-const AppError = require('../utils/appError');
+const AppError = require('../utils/AppError');
 const Sales = require('../models/salesModel');
 const insert = require('../utils/insert');
 
