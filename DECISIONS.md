@@ -44,4 +44,5 @@
 9. Implement duplicates check to avoid inserting the same data twice.
 10. When there are large number of records (>10,000) to be returned from "/sales/report", implement sorting e.g. on last_purchase_date etc to ensure the filtered results (only 10,000) displayed are properly sorted.
 11. Better error handling that allows jest to catch easily.
-12. As I have never worked on streaming before, working on this project allows me to learn a lot on streaming and handling big dataset. I wish I have more time to dig deeper on work better on it.
+12. Regarding additional service to trigger data feed in, I will build 2 APIs, one for generating csv file, one serve as a call to call csv generator and also /sales/record to trigger automation of data feed in. It will be deployed to 2 Docker containers.
+13. As I have never worked on streaming before, working on this project allows me to learn a lot on streaming and handling big dataset. I wish I have more time to dig deeper on work better on it.
