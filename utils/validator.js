@@ -14,7 +14,7 @@ const validateGender = (gender, index) => {
   if (['M', 'F', ''].includes(gender)) return gender;
   if (['m', 'f'].includes(gender)) return gender.toUpperCase();
   const message = `Please provide valid input for GENDER ('M' or 'F') for record #${index}`;
-  return new AppError(message, 400);
+  throw new AppError(message, 400);
 };
 
 const validateNumber = (field, value, index, max = 0) => {
