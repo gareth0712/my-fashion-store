@@ -37,6 +37,11 @@
 4. More checking on whether the given file in "/sales/record" is a genuine CSV file, having headers, or a empty file and duplicate records.
 5. API "/sales/record" should first send the response as long as the data are validated and insert the data afterwards to avoid timeout issue.
 6. Create handling for production environment.
-7. Implement limitation on records to be returned by "/sales/report" to avoid crashing the program when there are too many records in the database
-8. Handle large datasets (with more than 1m row) by doing separating the return of response and insertion of data into DB with streams.
-9. Implement restriction on input for "USER_NAME" to only English characters.
+7. Allow switching between handling small and large datasets (with more than 30m row) for "/sales/record"  
+   a. For small dataset, return response together with number of data inserted.  
+   b. For large dataset, return response first and then do the insertion of data with streams afterwards.
+8. Implement data validation on input for "USER_NAME" to only English characters.
+9. Implement duplicates check to avoid inserting the same data twice.
+10. When there are large number of records (>10,000) to be returned from "/sales/report", implement sorting e.g. on last_purchase_date etc to ensure the filtered results (only 10,000) displayed are properly sorted.
+11. Better error handling that allows jest to catch easily.
+12. As I have never worked on streaming before, working on this project allows me to learn a lot on streaming and handling big dataset. I wish I have more time to dig deeper on work better on it.
